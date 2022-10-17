@@ -24,7 +24,7 @@ public class KafkaProducerController {
 
 	@PostMapping("/publish/json")
 	public ResponseEntity<String> publishJSONMessage(@RequestBody User user) {
-		user.setCreatedAt(new Date());
+		user.setCreatedAt(new Date().toString());
 		kafkaProducerService.sendJsonObject(user);
 		return new ResponseEntity<>("Json Published Successfully", HttpStatus.OK);
 	}
